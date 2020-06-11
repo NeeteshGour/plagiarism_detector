@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/cmp_files.css') }}">
+  </head>
+  <body>
+    <div class="nav">
+    </div>
+    
+    {% if result=="NO INTERNET CONNECTION" %}
+        <h1>OOPS!!!</h1>
+        <div style="height: 35%;width:35%;text-align:center;margin: auto;">
+           <img src="{{url_for('static', filename='images/nointernet.png')}}" alt="image loading failed" />
+        </div>
+    {% else %}
+        <h1>RESULT!!!</h1>
+        <div class="row1">
+          <div class="col1">
+              <img src="{{url_for('static', filename='images/file.png')}}" alt="image loading failed" />
+              <p class="p1">{{ file_name }}</p>
+          </div>
+    
+          <div class="col2">
+               <img src="{{url_for('static', filename='images/arrow.png')}}" alt="image loading failed" />
+          </div>
+    
+          <div class="col3">
+               <img src="{{url_for('static', filename='images/globe.png')}}" alt="image loading failed" />
+               <p class="p2"  >{{ folder_name }}</p>
+               
+          </div>
+        </div>
+        
+    {% endif %}
+    
+    <hr>
+    
+    
+    {% if result=="NOT PLAGIARIZED" %}
+            <div class="result" style = "color:red; border:2.5px solid green">
+                  <p > {{ result }}</p>
+            </div>
+    {% elif result=="NO INTERNET CONNECTION" %}
+            <div class="result" style = "color:red; border:2.5px solid red">
+                  <p > {{ result }}</p>
+            </div>
+        {% else %}
+             <div class="result">
+                  <p > {{ result }}</p>
+            </div>
+        {% endif %}
+   </body>
+</html>
